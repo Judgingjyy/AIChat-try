@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Reply</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --text: #1f2937;
+      --muted: #667085;
+      --border: #d0d5dd;
+      --accent: #1769aa;
+      --code-bg: #101828;
+      --code-text: #e6edf3;
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", Arial, sans-serif;
+      line-height: 1.6;
+    }
+    main {
+      width: min(980px, calc(100% - 32px));
+      margin: 28px auto;
+    }
+    h1 {
+      margin: 0 0 18px;
+      font-size: 24px;
+      font-weight: 650;
+    }
+    .markdown-text,
+    .code-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 14px 0;
+      overflow: hidden;
+    }
+    .markdown-text pre {
+      white-space: pre-wrap;
+      margin: 0;
+      padding: 16px;
+      font: inherit;
+    }
+    .code-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    button {
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: white;
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    pre {
+      margin: 0;
+      overflow: auto;
+    }
+    code {
+      display: block;
+      padding: 16px;
+      background: var(--code-bg);
+      color: var(--code-text);
+      font: 14px/1.5 Consolas, "Cascadia Code", monospace;
+      white-space: pre;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>AI 回复</h1>
+    <section class="markdown-text"><pre>Sean你好！Judging～
+
+你上传的 `vector_demo.cpp` 我已经仔细看过了。这正好是刚才我用来举例子讲 C++ `std::vector` 的那个完整程序，现在我就把它当成“黑板上的样例”，逐行讲解给你听。
+
+---
+
+## 文件整体功能
+这段代码**演示了 `std::vector`（动态数组）的基本操作**：创建、添加元素、访问元素、遍历以及删除元素，最后输出每一步的结果。
+
+---
+
+## 逐段详细解释
+
+### 1. 头文件引入
+</pre></section>
+
+            <section class="code-card">
+                <div class="code-toolbar">
+                    <span>cpp</span>
+                    <button type="button" onclick="copyCode('code-1', this)">复制</button>
+                </div>
+                <pre><code id="code-1">#include &lt;iostream&gt;   // 用于输入输出，如 std::cout、std::endl
+#include &lt;vector&gt;     // 用于使用 std::vector 容器</code></pre>
+            </section>
+            
+<section class="markdown-text"><pre>
+- `iostream` 让你能在屏幕上打印文字。
+- `vector` 包含 `std::vector` 的定义，必须引入才能用。
+
+### 2. main 函数开始
+</pre></section>
+
+            <section class="code-card">
+                <div class="code-toolbar">
+                    <span>cpp</span>
+                    <button type="button" onclick="copyCode('code-2', this)">复制</button>
+                </div>
+                <pre><code id="code-2">int main() {
+    // 创建一个空的整数 vector
+    std::vector&lt;int&gt; nums;</code></pre>
+            </section>
+            
+<section class="markdown-text"><pre>
+- `std::vector&lt;int&gt;` 是一个存放 `int` 类型元素的动态数组。
+- `nums` 是它的名字，现在是空的，里面没有任何数字。
+
+### 3. 添加元素（push_back）
+</pre></section>
+
+            <section class="code-card">
+                <div class="code-toolbar">
+                    <span>cpp</span>
+                    <button type="button" onclick="copyCode('code-3', this)">复制</button>
+                </div>
+                <pre><code id="code-3">    nums.push_back(10);
+    nums.push_back(20);
+    nums.push_back(30);</code></pre>
+            </section>
+            
+<section class="markdown-text"><pre>
+- `push_back` 是在向量的末尾添加新元素。
+- 执行完这三句后，`nums` 里就有了三个数字：`[10, 20, 30]`（顺序就是添加的顺序）。
+
+### 4. 查看大小和访问元素
+</pre></section>
+
+            <section class="code-card">
+                <div class="code-toolbar">
+                    <span>cpp</span>
+                    <button type="button" onclick="copyCode('code-4', this)">复制</button>
+                </div>
+                <pre><code id="code-4">    std::cout &lt;&lt; &quot;vector 大小: &quot; &lt;&lt; nums.size() &lt;&lt; std::endl;</code></pre>
+            </section>
+            
+<section class="markdown-text"><pre>
+- `size()` 返回当前元素个数。
+- 这里会输出 `vector 大小: 3`。
+
+</pre></section>
+
+            <section class="code-card">
+                <div class="code-toolbar">
+                    <span>cpp</span>
+                    <button type="button" onclick="copyCode('code-5', this)">复制</button>
+                </div>
+                <pre><code id="code-5">    std::cout &lt;&lt; &quot;第一个元素: &quot; &lt;&lt; nums[0] &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;第二个元素: &quot; &lt;&lt; nums.at(1) &lt;&lt; std::endl; // at 会检查越界</code></pre>
+            </section>
+            
+<section class="markdown-text"><pre>
+- `nums[0]` 是下标访问，像普通数组一样，`0` 是第一个元素（10）。
+- `nums.at(1)` 是第二种访问方式，`1` 是第二个元素（20）。
+- **区别**：`at()` 会检查下标是否越界，如果越界会抛出异常，而 `[]` 不检查，越界是未定义行为。
+
+### 5. 用范围 for 循环遍历
+</pre></section>
+
+            <section class="code-card">
+                <div class="code-toolbar">
+                    <span>cpp</span>
+                    <button type="button" onclick="copyCode('code-6', this)">复制</button>
+                </div>
+                <pre><code id="code-6">    std::cout &lt;&lt; &quot;全部元素: &quot;;
+    for (int x : nums) {
+        std::cout &lt;&lt; x &lt;&lt; &quot; &quot;;
+    }
+    std::cout &lt;&lt; std::endl;</code></pre>
+            </section>
+            
+<section class="markdown-text"><pre>
+- 这是 C++11 引入的范围 for 循环。`int x` 每次取出 `nums` 中的一个元素，从第一个到最后一个。
+- 效果：会打印 `10 20 30`，每个数字用空格隔开，最后换行。
+
+### 6. 删除最后一个元素（pop_back）
+</pre></section>
+
+            <section class="code-card">
+                <div class="code-toolbar">
+                    <span>cpp</span>
+                    <button type="button" onclick="copyCode('code-7', this)">复制</button>
+                </div>
+                <pre><code id="code-7">    nums.pop_back();
+    std::cout &lt;&lt; &quot;pop 后大小: &quot; &lt;&lt; nums.size() &lt;&lt; std::endl;</code></pre>
+            </section>
+            
+<section class="markdown-text"><pre>
+- `pop_back()` 删除末尾元素（这里是 30），不返回被删的值。
+- 删完后 `nums` 里剩下 `[10, 20]`，所以 `size()` 变成 2。
+- 输出：`pop 后大小: 2`。
+
+### 7. 结束
+</pre></section>
+
+            <section class="code-card">
+                <div class="code-toolbar">
+                    <span>cpp</span>
+                    <button type="button" onclick="copyCode('code-8', this)">复制</button>
+                </div>
+                <pre><code id="code-8">    return 0;
+}</code></pre>
+            </section>
+            
+<section class="markdown-text"><pre>
+- 主函数正常结束，返回 0 表示程序成功。
+
+---
+
+## 运行结果预估
+如果你编译运行这个文件，屏幕会显示：
+</pre></section>
+
+            <section class="code-card">
+                <div class="code-toolbar">
+                    <span>code</span>
+                    <button type="button" onclick="copyCode('code-9', this)">复制</button>
+                </div>
+                <pre><code id="code-9">vector 大小: 3
+第一个元素: 10
+第二个元素: 20
+全部元素: 10 20 30
+pop 后大小: 2</code></pre>
+            </section>
+            
+<section class="markdown-text"><pre>
+
+---
+
+## 老师的一点引申
+- 如果用 `nums.at(3)` 去访问第四个元素（不存在），程序会抛出 `std::out_of_range` 异常，比 `nums[3]` 更安全。
+- 如果想要在开头或中间插入元素，可以研究一下 `insert()` 成员函数。
+- 如果你需要存放数学向量，`std::vector` 可以当坐标容器，比如 `std::vector&lt;double&gt; vec = {1.0, 2.0, 3.0};` 表示三维空间中的向量。
+
+Judging，这就是这个文件的全部秘密了～  
+如果你想试试修改它，比如改成让用户输入数字再添加，或者练习越界检查，我都可以陪你一起改代码。😊</pre></section>
+  </main>
+  <script>
+    async function copyCode(id, button) {
+      const text = document.getElementById(id).innerText;
+      await navigator.clipboard.writeText(text);
+      const oldText = button.innerText;
+      button.innerText = "已复制";
+      setTimeout(() => button.innerText = oldText, 1200);
+    }
+  </script>
+</body>
+</html>
